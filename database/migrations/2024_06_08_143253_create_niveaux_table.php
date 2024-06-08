@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('filieres', function (Blueprint $table) {
+        Schema::create('niveaux', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->unsignedBigInteger('departement_id');
-            $table->foreign('departement_id')->references('id')->on('departements')->onUpdate('cascade')->onDelete('cascade');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('filieres');
+        Schema::dropIfExists('niveaux');
     }
 };
